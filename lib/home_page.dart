@@ -10,8 +10,29 @@ class HomePage extends StatelessWidget {
         title: const Text('API Search'),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text('APIs '),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(children: [
+          const SizedBox(
+            height: 20,
+          ),
+          SizedBox(
+              height: 50,
+              width: double.infinity,
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                ),
+              )),
+          const SizedBox(
+            height: 20,
+          ),
+          const Text(
+            'APIs ',
+          ),
+        ]),
       ),
     );
   }
