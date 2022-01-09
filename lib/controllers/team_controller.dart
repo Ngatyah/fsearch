@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 class TeamController extends GetxController {
   var isLoading = false.obs;
+  var switchToFixture = false.obs;
   var teamList = <TeamInfo>[].obs;
   var cdate = DateTime.now().obs;
 
