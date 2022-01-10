@@ -6,6 +6,7 @@ class MatchController extends GetxController {
   var isLoading = false.obs;
 
   var matchList = <SoccerMatch>[].obs;
+  var selectedFixture = <SoccerMatch>[].obs;
   var cdate = DateTime.now().obs;
 
   void fetchFixtures(String query) async {

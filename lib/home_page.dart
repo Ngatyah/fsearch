@@ -71,13 +71,16 @@ class HomePage extends StatelessWidget {
               if (tCxt.isLoading.value) {
                 return const Center(child: CircularProgressIndicator());
               } else {
-                return ListView.builder(
-                  primary: false,
-                  shrinkWrap: true,
-                  itemBuilder: (buildContext, index) => SearchTile(
-                    teamInfo: tCxt.teamList[index],
+                return Visibility(
+                  visible: tCxt.switchToFixture.value,
+                  child: ListView.builder(
+                    primary: false,
+                    shrinkWrap: true,
+                    itemBuilder: (buildContext, index) => SearchTile(
+                      teamInfo: tCxt.teamList[index],
+                    ),
+                    itemCount: tCxt.teamList.length,
                   ),
-                  itemCount: tCxt.teamList.length,
                 );
               }
             }),
