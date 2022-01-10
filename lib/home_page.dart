@@ -53,14 +53,20 @@ class HomePage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Obx(() => ListView.builder(
+            Obx(() {
+              if (mCxt.isLoading.value) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              return ListView.separated(
+                  separatorBuilder: (buildContext, index) =>
+                      const Divider(indent: 10),
                   primary: false,
                   shrinkWrap: true,
                   itemBuilder: (buildContext, index) => FixtureTile(
-                    soccer: mCxt.matchList[index],
-                  ),
-                  itemCount: mCxt.matchList.length,
-                )),
+                        soccer: mCxt.matchList[index],
+                      ),
+                  itemCount: mCxt.matchList.length);
+            }),
             Obx(() {
               if (tCxt.isLoading.value) {
                 return const Center(child: CircularProgressIndicator());
