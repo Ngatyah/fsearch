@@ -5,6 +5,7 @@ import 'package:fsearch/controllers/team_controller.dart';
 import 'package:get/get.dart';
 
 import 'controllers/match_controller.dart';
+import 'widgets/fixture_display.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -67,6 +68,10 @@ class HomePage extends StatelessWidget {
                       ),
                   itemCount: mCxt.matchList.length);
             }),
+            const SizedBox(
+              height: 20,
+            ),
+            FixtureDisplay(),
             Obx(() {
               if (tCxt.isLoading.value) {
                 return const Center(child: CircularProgressIndicator());
@@ -93,29 +98,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-//  Obx(() => Text(tCxt.isLoading.value.toString())),
-//  if (tCxt.isLoading.value) {
-//                 Obx(() => const Text('This is Going ROund>>>**************'));
-//               }
-// Obx(() => ListView.builder(
-//                   primary: false,
-//                   shrinkWrap: true,
-//                   itemBuilder: (buildContext, index) => FixtureTile(
-//                     soccer: mCxt.matchList[index],
-//                   ),
-//                   itemCount: mCxt.matchList.length,
-//                 ))
-
-// tCxt.isLoading.value == true
-//                 ? Center(child: Obx(() => const CircularProgressIndicator()))
-//                 : mCxt.switchToFixture.value
-//                     ? 
-// : Obx(() => ListView.builder(
-//                           primary: false,
-//                           shrinkWrap: true,
-//                           itemBuilder: (buildContext, index) => SearchTile(
-//                             teamInfo: tCxt.teamList[index],
-//                           ),
-//                           itemCount: tCxt.teamList.length,
-//                         )),

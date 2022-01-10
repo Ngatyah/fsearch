@@ -9,6 +9,8 @@ class MatchController extends GetxController {
   var selectedFixture = <SoccerMatch>[].obs;
   var cdate = DateTime.now().obs;
 
+  deleteSelectedMatch(int index) => selectedFixture.removeAt(index);
+
   void fetchFixtures(String query) async {
     try {
       isLoading(true);

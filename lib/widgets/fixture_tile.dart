@@ -21,7 +21,7 @@ class FixtureTile extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
       child: InkWell(
         onTap: () {
-          mCxt.selectedFixture.assign(soccer);
+          mCxt.selectedFixture.add(soccer);
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
