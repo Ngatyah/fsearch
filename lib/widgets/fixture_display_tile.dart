@@ -62,7 +62,8 @@ class FixtureDisplayTile extends StatelessWidget {
           SizedBox(
             width: width * 0.01,
           ),
-          const Text('1'),
+          IconButton(
+              onPressed: () {}, icon: const Icon(Icons.arrow_drop_down_circle)),
           SizedBox(
             width: width * 0.04,
           ),
