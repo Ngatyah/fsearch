@@ -11,6 +11,7 @@ class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
   final MatchController mCxt = Get.put(MatchController());
   final TeamController tCxt = Get.put(TeamController());
+  final myController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +38,27 @@ class HomePage extends StatelessWidget {
                   border: Border.all(color: Colors.black26),
                 ),
                 child: TextField(
+                  controller: myController,
                   textAlignVertical: TextAlignVertical.center,
                   textAlign: TextAlign.left,
                   onSubmitted: (text) {
                     tCxt.fetchTeams(text);
                     tCxt.switchToFixture.toggle();
                   },
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
+                    suffixIcon: myController.text.isNotEmpty
+                        ? GestureDetector(
+                            child: const Icon(
+                              Icons.close,
+                            ),
+                            onTap: () {
+                              myController.clear();
+                              Get.focusScope;
+                            },
+                          )
+                        : null,
                     border: InputBorder.none,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.search,
                       size: 30,
                     ),

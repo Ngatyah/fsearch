@@ -19,5 +19,5 @@ class TeamController extends GetxController {
     } finally {
       isLoading(false);
     }
-  }
+ }
 }
