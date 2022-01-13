@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:fsearch/controllers/odds_controller.dart';
-import 'package:fsearch/widgets/choose_odd.dart';
 import 'package:get/get.dart';
 
 import 'package:fsearch/controllers/match_controller.dart';
-import 'package:fsearch/models/soccer_match.dart';
+import 'package:fsearch/controllers/odds_controller.dart';
+import 'package:fsearch/models/bet_info.dart';
+
+import 'package:fsearch/widgets/choose_odd.dart';
 
 class FixtureDisplayTile extends StatelessWidget {
   FixtureDisplayTile({
     Key? key,
-    required this.soccer,
+    required this.betInfo,
     required this.index,
   }) : super(key: key);
-  final SoccerMatch soccer;
+  final BetInfo betInfo;
   final int index;
   final width = Get.size.width;
-  final MatchController mCxt = Get.find<MatchController>();
+
   final OddsController oCxt = Get.find<OddsController>();
+  final MatchController mCxt = Get.find<MatchController>();
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +31,14 @@ class FixtureDisplayTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                  width: width * 0.15, child: Text(soccer.teams.home.name)),
+                  width: width * 0.15,
+                  child: Text(betInfo.soccer.teams.home.name)),
               SizedBox(
                 width: width * 0.02,
               ),
               SizedBox(
                 child: Image.network(
-                  soccer.teams.home.logo,
+                  betInfo.soccer.teams.home.logo,
                   fit: BoxFit.cover,
                   width: 30,
                   height: 30,
@@ -53,7 +56,7 @@ class FixtureDisplayTile extends StatelessWidget {
               ),
               SizedBox(
                 child: Image.network(
-                  soccer.teams.away.logo,
+                  betInfo.soccer.teams.away.logo,
                   fit: BoxFit.cover,
                   width: 30,
                   height: 30,
@@ -64,21 +67,21 @@ class FixtureDisplayTile extends StatelessWidget {
               ),
               SizedBox(
                 width: width * 0.15,
-                child: Text(soccer.teams.away.name),
+                child: Text(betInfo.soccer.teams.away.name),
               ),
               SizedBox(
                 width: width * 0.01,
               ),
               IconButton(
                   onPressed: () {
-                    Get.to(ChooseOdd());
-                    oCxt.fetchOddData(soccer.fixture.id.toString());
+                    Get.to(ChooseOdd(soccer: betInfo.soccer, count: index));
+                    oCxt.fetchOddData(betInfo.soccer.fixture.id.toString());
                   },
                   icon: const Icon(Icons.arrow_drop_down_circle)),
               SizedBox(
                 width: width * 0.04,
               ),
-              const Text('3.45'),
+              Text(betInfo.bets?.values[0].odd ?? ''),
               SizedBox(
                 width: width * 0.01,
               ),
@@ -96,7 +99,13 @@ class FixtureDisplayTile extends StatelessWidget {
               )
             ],
           ),
-          Text('${soccer.teams.away.name} Wins 2:1')
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(betInfo.bets?.name ?? ' no data yet'),
+              Text(betInfo.bets?.values[0].value ?? ''),
+            ],
+          )
         ],
       ),
     );

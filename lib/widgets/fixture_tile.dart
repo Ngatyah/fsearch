@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:fsearch/controllers/match_controller.dart';
+import 'package:fsearch/controllers/odds_controller.dart';
+import 'package:fsearch/models/bet_info.dart';
 import 'package:fsearch/models/soccer_match.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -13,7 +16,8 @@ class FixtureTile extends StatelessWidget {
   final width = Get.size.width;
   final k = DateFormat("yyyy-MM-dd");
   final f = DateFormat.yMMMEd();
-  final MatchController mCxt = Get.find<MatchController>();
+
+  final OddsController oCxt = Get.find<OddsController>();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +25,7 @@ class FixtureTile extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
       child: InkWell(
         onTap: () {
-          mCxt.selectedFixture.add(soccer);
+          oCxt.selectedBet.add(BetInfo(soccer: soccer, bets: null));
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
