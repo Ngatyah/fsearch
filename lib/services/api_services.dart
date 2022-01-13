@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:fsearch/models/odds.dart';
 import 'package:fsearch/models/soccer_match.dart';
 import 'package:http/http.dart';
 
@@ -51,6 +52,30 @@ class ApiServices {
       return teams;
     } else {
       return teams;
+    }
+  }
+
+  static Future<List<Odds>> getQuerriedOdds(String query) async {
+    var body;
+    List<Odds> odds = [];
+    Response res = await get(
+        Uri.parse(
+          'https://v3.football.api-sports.io/odds?bookmaker=6&fixture=$query',
+        ),
+        headers: {
+          "x-rapidapi-host": "v3.football.api-sports.io",
+          "x-rapidapi-key": '069292380d4a7dc552d0cb3e9304b4ca',
+        });
+    if (res.statusCode == 200) {
+      body = jsonDecode(res.body);
+      List<dynamic> teamList = body['response'];
+      print(body);
+
+      odds = teamList.map((dynamic item) => Odds.fromJson(item)).toList();
+      print(odds);
+      return odds;
+    } else {
+      return odds;
     }
   }
 }

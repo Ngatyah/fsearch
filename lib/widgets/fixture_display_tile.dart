@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fsearch/controllers/odds_controller.dart';
 import 'package:fsearch/widgets/choose_odd.dart';
 import 'package:get/get.dart';
 
@@ -15,6 +16,7 @@ class FixtureDisplayTile extends StatelessWidget {
   final int index;
   final width = Get.size.width;
   final MatchController mCxt = Get.find<MatchController>();
+  final OddsController oCxt = Get.find<OddsController>();
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +72,7 @@ class FixtureDisplayTile extends StatelessWidget {
               IconButton(
                   onPressed: () {
                     Get.to(ChooseOdd());
+                    oCxt.fetchOddData(soccer.fixture.id.toString());
                   },
                   icon: const Icon(Icons.arrow_drop_down_circle)),
               SizedBox(

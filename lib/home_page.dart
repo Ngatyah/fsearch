@@ -5,12 +5,14 @@ import 'package:fsearch/controllers/team_controller.dart';
 import 'package:get/get.dart';
 
 import 'controllers/match_controller.dart';
+import 'controllers/odds_controller.dart';
 import 'widgets/fixture_display.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
   final MatchController mCxt = Get.put(MatchController());
   final TeamController tCxt = Get.put(TeamController());
+  final OddsController oCxt = Get.put(OddsController());
   final myController = TextEditingController();
 
   @override
