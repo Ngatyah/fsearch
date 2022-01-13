@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fsearch/widgets/choose_odd.dart';
 import 'package:get/get.dart';
 
 import 'package:fsearch/controllers/match_controller.dart';
@@ -67,7 +68,9 @@ class FixtureDisplayTile extends StatelessWidget {
                 width: width * 0.01,
               ),
               IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(ChooseOdd());
+                  },
                   icon: const Icon(Icons.arrow_drop_down_circle)),
               SizedBox(
                 width: width * 0.04,
