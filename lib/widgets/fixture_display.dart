@@ -10,6 +10,7 @@ class FixtureDisplay extends StatelessWidget {
   FixtureDisplay({Key? key}) : super(key: key);
 
   final OddsController oCxt = Get.find<OddsController>();
+  final myController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +28,66 @@ class FixtureDisplay extends StatelessWidget {
                   index: index,
                 ),
             itemCount: oCxt.selectedBet.length)),
+        const SizedBox(
+          height: 20,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+            const Text(
+              'Total Odds: ',
+              style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.lightGreen,
+                  fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              width: 20,
+            ),
+            Obx(() => Text(
+                  oCxt.totalOdds().toStringAsFixed(2),
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
+                )),
+          ]),
+        ),
+        const SizedBox(
+          width: 20,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              const Text(
+                'Enter Your Selling Price: ',
+                style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.lightGreen,
+                    fontWeight: FontWeight.bold),
+              ),
+              Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  height: 42,
+                  width: 100,
+                  margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.white,
+                    border: Border.all(color: Colors.black26),
+                  ),
+                  child: TextField(
+                    controller: myController,
+                    textAlignVertical: TextAlignVertical.center,
+                    textAlign: TextAlign.left,
+                    onSubmitted: (text) {},
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                    ),
+                  )),
+            ],
+          ),
+        )
       ],
     );
   }

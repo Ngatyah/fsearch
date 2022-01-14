@@ -9,6 +9,14 @@ class OddsController extends GetxController {
   var selectedOdd = <Bets>[].obs;
   var selectedBet = <BetInfo>[].obs;
   get filterSelectedBet => selectedBet.where((p0) => false);
+  totalOdds() {
+    var totalSum = selectedBet.fold(
+        0,
+        (pValue, element) =>
+            double.parse(pValue!.toString()) +
+            double.parse((element.bets?.values[0].odd) ?? 0.toString()));
+    return totalSum;
+  }
 
   fetchOddData(String query) async {
     try {
