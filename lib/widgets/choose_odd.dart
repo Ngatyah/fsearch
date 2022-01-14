@@ -20,7 +20,6 @@ class ChooseOdd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var indx;
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -70,8 +69,8 @@ class ChooseOdd extends StatelessWidget {
         ),
       ),
       body: oCxt.oddList.isEmpty
-          ? Center(
-              child: Obx(() => const CircularProgressIndicator()),
+          ? const Center(
+              child: CircularProgressIndicator(),
             )
           : ListView.builder(
               itemCount: oCxt.oddList[0].bookmakers[0].bets.length,

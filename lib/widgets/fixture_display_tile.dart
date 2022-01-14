@@ -100,9 +100,12 @@ class FixtureDisplayTile extends StatelessWidget {
             ],
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(betInfo.bets?.name ?? ' no data yet'),
+              const SizedBox(
+                width: 10,
+              ),
               Text(betInfo.bets?.values[0].value ?? ''),
             ],
           )
