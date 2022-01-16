@@ -8,6 +8,8 @@ class OddsController extends GetxController {
   var oddList = <Odds>[].obs;
   var selectedOdd = <Bets>[].obs;
   var selectedBet = <BetInfo>[].obs;
+  var oddPrice = 0.0.obs;
+  var showOddPrice = false.obs;
   get filterSelectedBet => selectedBet.where((p0) => false);
   totalOdds() {
     var totalSum = selectedBet.fold(
