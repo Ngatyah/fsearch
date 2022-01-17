@@ -19,7 +19,7 @@ class FixtureDisplayTile extends StatelessWidget {
 
   final OddsController oCxt = Get.find<OddsController>();
   final MatchController mCxt = Get.find<MatchController>();
-
+//display all fixtures and thier respective odds
   @override
   Widget build(BuildContext context) {
     return SizedBox(
