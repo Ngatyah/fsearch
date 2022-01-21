@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'odds.g.dart';
 
+// add odds serialization
 @JsonSerializable(explicitToJson: true)
 class Odds {
   Odds({
