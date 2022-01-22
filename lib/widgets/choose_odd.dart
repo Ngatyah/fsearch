@@ -7,6 +7,8 @@ import 'package:fsearch/controllers/odds_controller.dart';
 import 'package:fsearch/models/odds.dart';
 import 'package:fsearch/models/soccer_match.dart';
 
+//Add odd multiple choices
+
 class ChooseOdd extends StatelessWidget {
   ChooseOdd({
     Key? key,
