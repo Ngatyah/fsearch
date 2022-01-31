@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'fixture_display_tile.dart';
 import 'fixture_methods.dart';
 
-//Display the whole bet
+//Display FIXTURE AND THEIR ODDS
 class FixtureDisplay extends StatelessWidget {
   FixtureDisplay({Key? key}) : super(key: key);
 
