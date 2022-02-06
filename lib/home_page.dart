@@ -8,7 +8,7 @@ import 'controllers/match_controller.dart';
 import 'controllers/odds_controller.dart';
 import 'widgets/fixture_display.dart';
 
-//edit  controllers and initiate them here
+//edit  controllers and initiate get here 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
   final MatchController mCxt = Get.put(MatchController());
